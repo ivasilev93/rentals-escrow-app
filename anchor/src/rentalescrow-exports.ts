@@ -21,7 +21,7 @@ export function getRentalescrowProgramId(cluster: Cluster) {
     case 'devnet':
     case 'testnet':
       // This is the program ID for the Rentalescrow program on devnet and testnet.
-      return new PublicKey('coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF')
+      return new PublicKey('Eb6EE58yZdHSVrqNoB47hajyNGwe2PxCNf8EacmrhTmu')
     case 'mainnet-beta':
     default:
       return RENTALESCROW_PROGRAM_ID

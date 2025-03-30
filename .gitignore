@@ -23,3 +23,21 @@ dist-ssr
 *.sln
 *.sw?
 /tmp
+
+Cargo.lock
+yarn.lock
+package-lock.json
+target/
+
+#Runtime data
+pids
+*.pid
+*.seed
+
+build/Release
+
+.npm
+test-ledger
+
+.next/
+.anchor/

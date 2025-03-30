@@ -1,5 +1,5 @@
 {
-  "address": "coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF",
+  "address": "Eb6EE58yZdHSVrqNoB47hajyNGwe2PxCNf8EacmrhTmu",
   "metadata": {
     "name": "rentalescrow",
     "version": "0.1.0",
@@ -8,96 +8,405 @@
   },
   "instructions": [
     {
-      "name": "close",
-      "discriminator": [98, 165, 201, 177, 108, 65, 206, 96],
+      "name": "book",
+      "discriminator": [
+        78,
+        39,
+        190,
+        43,
+        50,
+        252,
+        147,
+        47
+      ],
       "accounts": [
         {
-          "name": "payer",
+          "name": "signer",
           "writable": true,
           "signer": true
         },
         {
-          "name": "rentalescrow",
+          "name": "guest_token_account",
           "writable": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "decrement",
-      "discriminator": [106, 227, 168, 59, 248, 27, 150, 101],
-      "accounts": [
-        {
-          "name": "rentalescrow",
-          "writable": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "increment",
-      "discriminator": [11, 18, 104, 9, 104, 174, 59, 33],
-      "accounts": [
-        {
-          "name": "rentalescrow",
-          "writable": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "initialize",
-      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
-      "accounts": [
-        {
-          "name": "payer",
-          "writable": true,
-          "signer": true
         },
         {
-          "name": "rentalescrow",
+          "name": "booking_payment",
           "writable": true,
-          "signer": true
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  101,
+                  115,
+                  99,
+                  114,
+                  111,
+                  119
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "params.booking_id"
+              },
+              {
+                "kind": "arg",
+                "path": "params.host_pk"
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "booking_payment_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "params.booking_id"
+              },
+              {
+                "kind": "arg",
+                "path": "params.host_pk"
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program",
           "address": "11111111111111111111111111111111"
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "BookInstructionParams"
+            }
+          }
+        }
+      ]
     },
     {
-      "name": "set",
-      "discriminator": [198, 51, 53, 241, 116, 29, 126, 194],
+      "name": "host_withdraw",
+      "discriminator": [
+        237,
+        113,
+        163,
+        47,
+        206,
+        140,
+        200,
+        34
+      ],
       "accounts": [
         {
-          "name": "rentalescrow",
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "host_token_account",
           "writable": true
+        },
+        {
+          "name": "guest_account",
+          "docs": [
+            "CHECK if this account is owned by system program"
+          ],
+          "writable": true
+        },
+        {
+          "name": "booking_payment",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  101,
+                  115,
+                  99,
+                  114,
+                  111,
+                  119
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "params.booking_id"
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "account",
+                "path": "guest_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "booking_payment_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  111,
+                  111,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "params.booking_id"
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "account",
+                "path": "guest_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "value",
-          "type": "u8"
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "HostWithdrawParams"
+            }
+          }
         }
       ]
     }
   ],
   "accounts": [
     {
-      "name": "Rentalescrow",
-      "discriminator": [255, 176, 4, 245, 188, 253, 124, 25]
+      "name": "Booking",
+      "discriminator": [
+        147,
+        50,
+        61,
+        138,
+        208,
+        21,
+        254,
+        156
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "BookingAmountInvalid",
+      "msg": "Invalid booking amount"
+    },
+    {
+      "code": 6001,
+      "name": "StartDateInvalid",
+      "msg": "Invalid start date"
+    },
+    {
+      "code": 6002,
+      "name": "EndDateInvalid",
+      "msg": "Invalid end date"
+    },
+    {
+      "code": 6003,
+      "name": "CompletedBooking",
+      "msg": "Booking already completed"
+    },
+    {
+      "code": 6004,
+      "name": "BookingIdInvalid",
+      "msg": "Invalid booking id"
+    },
+    {
+      "code": 6005,
+      "name": "InitializedBooking",
+      "msg": "Booking already initialized"
+    },
+    {
+      "code": 6006,
+      "name": "BookingInvalid",
+      "msg": "Invalid booking"
+    },
+    {
+      "code": 6007,
+      "name": "WithdrawForbidden",
+      "msg": "Host can withdraw only after end date"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidMint",
+      "msg": "Invalid mint"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidGuestAccount",
+      "msg": "Invalid guest account"
     }
   ],
   "types": [
     {
-      "name": "Rentalescrow",
+      "name": "BookInstructionParams",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "count",
+            "name": "booking_id",
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "type": "i64"
+          },
+          {
+            "name": "end_date",
+            "type": "i64"
+          },
+          {
+            "name": "host_pk",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Booking",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "type": "i64"
+          },
+          {
+            "name": "end_date",
+            "type": "i64"
+          },
+          {
+            "name": "state",
+            "type": {
+              "defined": {
+                "name": "BookingState"
+              }
+            }
+          },
+          {
+            "name": "bump",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BookingState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "None"
+          },
+          {
+            "name": "New"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HostWithdrawParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "booking_id",
+            "type": "string"
           }
         ]
       }
