@@ -2,7 +2,7 @@ name: Test Anchor
 
 on:
   pull_request:
-    paths:
+    push:
       branches: ['main']
 
 jobs:
