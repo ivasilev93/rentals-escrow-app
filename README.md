@@ -26,7 +26,7 @@ https://testrental-escrow.xyz/
   
   ```rust
     #[account(
-    init_if_needed,
+    init,
     seeds = [
         BOOK_ESCROW_SEED.as_bytes(),          // "booking_escrow"
         params.booking_id.as_bytes(),         // Unique booking ID
@@ -38,12 +38,13 @@ https://testrental-escrow.xyz/
     space = 8 + Booking::INIT_SPACE
     )]
     pub booking_payment: Account<'info, Booking>,
-    
+
     #[account(
-        init_if_needed,
+        init,
         payer = signer,
         token::mint = mint,
         token::authority = booking_payment_vault,
+        token::token_program = token_program,
         seeds = [
             BOOK_ESCROW_VAULT_SEED.as_bytes(),    // "booking_vault"
             params.booking_id.as_bytes(),         // Unique booking ID
