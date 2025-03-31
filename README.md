@@ -2,6 +2,8 @@
 
 This is a small sample project, that implements a rental escrow smart contract on the Solana blockchain, designed for an Airbnb-like applications. It facilitates secure payment handling between guests and hosts using Wrapped SOL (WSOL).
 
+https://testrental-escrow.xyz/
+
 ## Overview
 - Purpose: Guests deposit payments into an escrow smart contract, which holds funds in a Program Derived Address (PDA) vault until the booking period ends. Hosts can then withdraw the payment.
 
