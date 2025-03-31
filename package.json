@@ -10,7 +10,7 @@
     "anchor-localnet": "cd anchor && anchor localnet",
     "anchor-test": "cd anchor && anchor test",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp staticwebapp.config.json dist/",
     "ci": "npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
