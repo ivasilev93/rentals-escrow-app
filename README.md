@@ -1,4 +1,34 @@
-# React + TypeScript + Vite
+# Payments escrow smart contract on solana
+
+This is a small sample project, that implements a rental escrow smart contract on the Solana blockchain, designed for an Airbnb-like applications. It facilitates secure payment handling between guests and hosts using Wrapped SOL (WSOL).
+
+## Overview
+- Purpose: Guests deposit payments into an escrow smart contract, which holds funds in a Program Derived Address (PDA) vault until the booking period ends. Hosts can then withdraw the payment.
+
+- Key features:
+  - Guests initiate bookings with a unique booking_id, specifying start_date, end_date, host_pk, and amount.
+  - Funds are locked in a vault PDA until after the end_date, ensuring security.
+  - Hosts withdraw funds post-booking using the booking_id and guest's public key.
+  - Tests to validate functionality and security.
+
+## Smart contract details
+  - Booking (BookInstruction)
+    - Creates a booking_payment PDA and a booking_payment_vault PDA.
+    - Transfers WSOL from the guest to the vault.
+    - Validates dates, amounts, and booking state.
+  - Withdrawal Process (HostWithdraw):
+    - Transfers funds from the vault to the host after the end_date.
+    - Closes the vault account, reclaiming rent.
+    - Enforces signer and timing constraints.
+
+## Frontend
+  - Since this is minimal app, state (booking id generation, guest/host booking records) is managed by the frontend and stored in the browser's local storage. 
+
+
+
+
+
+<!-- # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -52,4 +82,4 @@ export default tseslint.config({
 })
 ```
 
-# legacy-react-vite-tailwindtailwind
+# legacy-react-vite-tailwindtailwind -->
