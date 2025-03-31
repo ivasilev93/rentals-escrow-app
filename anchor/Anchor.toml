@@ -5,15 +5,17 @@ anchor_version = "0.30.1"
 resolution = true
 skip-lint = false
 
-[programs.devnet]
+[programs.localnet]
 rentalescrow = "Eb6EE58yZdHSVrqNoB47hajyNGwe2PxCNf8EacmrhTmu"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Devnet"
-wallet = "~/.config/solana/devnet-keypair.json"
+cluster = "localnet"
+# cluster = "Devnet"
+wallet = "~/.config/solana/id.json"
+# wallet = "~/.config/solana/devnet-keypair.json"
 
 [scripts]
 test = "../node_modules/.bin/jest --preset ts-jest"
