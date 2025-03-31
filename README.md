@@ -22,6 +22,38 @@ https://testrental-escrow.xyz/
     - Transfers funds from the vault to the host after the end_date.
     - Closes the vault account, reclaiming rent.
     - Enforces signer and timing constraints.
+  - PDA Derivation:
+  
+  ```rust
+    #[account(
+    init_if_needed,
+    seeds = [
+        BOOK_ESCROW_SEED.as_bytes(),          // "booking_escrow"
+        params.booking_id.as_bytes(),         // Unique booking ID
+        params.host_pk.key().as_ref(),        // Host public key
+        signer.key().as_ref()                 // Guest (signer) public key
+    ],
+    bump,
+    payer = signer,
+    space = 8 + Booking::INIT_SPACE
+    )]
+    pub booking_payment: Account<'info, Booking>,
+    
+    #[account(
+        init_if_needed,
+        payer = signer,
+        token::mint = mint,
+        token::authority = booking_payment_vault,
+        seeds = [
+            BOOK_ESCROW_VAULT_SEED.as_bytes(),    // "booking_vault"
+            params.booking_id.as_bytes(),         // Unique booking ID
+            params.host_pk.key().as_ref(),        // Host public key
+            signer.key().as_ref()                 // Guest (signer) public key
+        ],
+        bump
+    )]
+    pub booking_payment_vault: InterfaceAccount<'info, TokenAccount>,
+  ```
 
 ## Frontend
   - Since this is minimal app, state (booking id generation, guest/host booking records) is managed by the frontend and stored in the browser's local storage. 
