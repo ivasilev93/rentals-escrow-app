@@ -19,7 +19,7 @@ export default function DashboardFeature() {
       </p>
       <ol className="list-decimal list-inside space-y-4 text-gray-700">
         <li>
-          <span className="font-semibold"><Link className="underline" to={'/book'}>Book a Stay:</Link></span> Go to book page. Checkin and checkout will be fixed for easier testing purposes (checkin - 1 min from now, checkout - 2 min from now). You will have to set a host public key (try another wallet address you control), and pay with wSOL (ATA is automatically created and synced, if you dont have wSOL tokens). Your payment gets locked in the escrow smart contract and host can withdraw it after the end date.
+          <span className="font-semibold"><Link className="underline" to={'/book'}>Book a Stay:</Link></span> Go to book page. Checkin and checkout will be fixed for easier testing purposes (checkin - 1 min from now, checkout - 2 mins from now). You will have to set a host public key (try another wallet address you control), and pay with wSOL (ATA is automatically created and synced, if you dont have wSOL tokens). Your payment gets locked in the escrow smart contract and host can withdraw it after the end date.
         </li>
         <li>
           <span className="font-semibold">Save Your Booking:</span> After booking, you’ll get a transaction signature and a unique 32-character booking ID. The app will store the transaciton data in your browser's local storage for easier testing. You can delete them anytime. Obviously in production setting a web app will manage those.

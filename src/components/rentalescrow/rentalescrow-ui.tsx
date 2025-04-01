@@ -148,7 +148,7 @@ export function RentalUI({
 
             {/* Calendar Mock */}
             <div className="border rounded-lg mb-4">
-              <p className="p-2 text-red-500 text-l">For easier testing, dates will be fixed</p>
+              <p className="p-2 text-red-500 text-l">For easier testing, dates will be fixed 1 min apart</p>
               <div className="flex border-b">
                 <div className="w-1/2 p-4 border-r">
                   <div className="text-xs font-bold text-gray-500">CHECK-IN</div>
